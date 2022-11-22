@@ -11,7 +11,7 @@ router.post('/email', async(req, res) => {
     const { name, email, mensaje } = req.body;
 
     contentHTML = `
-        <h1>${{name}} quiere contratar nuestros servicios</h1>
+        <h1>${name} quiere contratar nuestros servicios</h1>
         <p>Sus datos de contaccto son ${email}</p>
         <p>${mensaje}</p>
     `;
