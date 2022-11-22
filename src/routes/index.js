@@ -33,7 +33,7 @@ router.post('/email', async(req, res) => {
         from: "'Correo de prueba' <prueba@javierfreire.cl>",
         to: 'javierfreire39@gmail.com',
         subject: 'Pruebas',
-        html: 'index.html'
+        html: index.html
     });
 
     console.log('mensaje ', info.messageId);
