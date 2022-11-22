@@ -7,9 +7,9 @@ router.get('/', (req, res) => {
     res.json({ mensaje: 'conectado' });
 });
 
-router.post('/email', async(req, res) => {
-    const { name, email, mensaje } = req.body;
+router.post('/email', (req, res) => {
 
+    const { name, email, mensaje } = req.body;
     contentHTML = `
         <h1>${name} quiere contratar nuestros servicios</h1>
         <p>Sus datos de contaccto son ${email}</p>
@@ -29,7 +29,7 @@ router.post('/email', async(req, res) => {
         }
     });
 
-    const info = await transporter.sendMail({
+    const info = transporter.sendMail({
         from: "'Correo de prueba' <prueba@javierfreire.cl>",
         to: 'javierfreire39@gmail.com',
         subject: 'Pruebas',
@@ -37,6 +37,7 @@ router.post('/email', async(req, res) => {
     });
 
     console.log('mensaje ', info.messageId);
+    console.log(req.body)
 
     res.json({ mensaje: 'enviado' });
 });
