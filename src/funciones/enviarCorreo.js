@@ -1,4 +1,5 @@
 const nodemailer = require('nodemailer');
+const config = require('../config');
 
 module.exports = async function(tipoCorreo, nombre, correoEnviar, correoCliente, mensaje) {
 
@@ -123,12 +124,12 @@ module.exports = async function(tipoCorreo, nombre, correoEnviar, correoCliente,
     `;
 
     const transporter = nodemailer.createTransport({
-        host: 'smtp.titan.email',
-        port: 465,
+        host: config.HOST_SMTP,
+        port: config.PORT_EMAIL,
         secure: true,
         auth: {
-            user: 'test@javierfreire.cl',
-            pass: 'jkulmnsit29taza'
+            user: config.USER_EMAIL,
+            pass: config.PASS_EMAIL
         },
         tls: {
             rejectUnauthorized: false
@@ -136,7 +137,7 @@ module.exports = async function(tipoCorreo, nombre, correoEnviar, correoCliente,
     });
 
     const info = await transporter.sendMail({
-        from: "'HUBCLEAN' <test@javierfreire.cl>",
+        from: "'HUBCLEAN' <prueba@javierfreire.cl>",
         to: correoEnviar,
         subject: cualTipoCorreo[tipoCorreo].asunto,
         text: cualTipoCorreo[tipoCorreo].notificacion,

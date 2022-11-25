@@ -1,5 +1,5 @@
 const { Router } = require('express');
-// const nodemailer = require('nodemailer');
+const config = require('../config');
 const enviarCorreo = require('../funciones/enviarCorreo');
 
 const router = Router();
@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
 router.post('/email', (req, res) => {
 
     const { name, email, mensaje } = req.body;
-    const correoAdmin = 'prueba@javierfreire.cl';
+    const correoAdmin = config.USER_EMAIL;
 
     //correoAdmin
     enviarCorreo(0, name, correoAdmin, email, mensaje);
