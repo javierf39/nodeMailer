@@ -10,6 +10,7 @@ const port = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
+app.use(express.static(__dirname + 'public'));
 app.use(require('./src/routes/index'));
 
 app.listen(port, () => {
