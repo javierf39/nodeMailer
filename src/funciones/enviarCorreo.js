@@ -78,7 +78,7 @@ module.exports = async function(tipoCorreo, nombre, correoEnviar, correoCliente,
 <body>
 <header class="header">
 
-
+<img src="cid:HUBCLEAN" alt="">
 
 
 </header>
@@ -113,7 +113,12 @@ module.exports = async function(tipoCorreo, nombre, correoEnviar, correoCliente,
         to: correoEnviar,
         subject: cualTipoCorreo[tipoCorreo].asunto,
         text: cualTipoCorreo[tipoCorreo].notificacion,
-        html: correoHTML
+        html: correoHTML,
+        attachments: [{
+            filename: 'HUBCLEAN.png',
+            path: './src/public/img/HUBCLEAN.png',
+            cid: 'HUBCLEAN'
+        }]
     });
 
     console.log('mensaje ', info);
