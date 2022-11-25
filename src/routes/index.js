@@ -1,5 +1,8 @@
 const { Router } = require('express');
-const config = require('../config');
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config();
+};
+
 const enviarCorreo = require('../funciones/enviarCorreo');
 
 const router = Router();
@@ -11,7 +14,7 @@ router.get('/', (req, res) => {
 router.post('/email', (req, res) => {
 
     const { name, email, mensaje } = req.body;
-    const correoAdmin = config.USER_EMAIL;
+    const correoAdmin = process.env.USER_EMAIL;
 
     //correoAdmin
     enviarCorreo(0, name, correoAdmin, email, mensaje);

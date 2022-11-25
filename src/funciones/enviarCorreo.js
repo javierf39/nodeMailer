@@ -1,5 +1,7 @@
 const nodemailer = require('nodemailer');
-const config = require('../config');
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config();
+};
 
 module.exports = async function(tipoCorreo, nombre, correoEnviar, correoCliente, mensaje) {
 
@@ -96,12 +98,12 @@ module.exports = async function(tipoCorreo, nombre, correoEnviar, correoCliente,
     `;
 
     const transporter = nodemailer.createTransport({
-        host: config.HOST_SMTP,
-        port: config.PORT_EMAIL,
+        host: process.env.HOST_SMTP,
+        port: process.env.PORT_EMAIL,
         secure: true,
         auth: {
-            user: config.USER_EMAIL,
-            pass: config.PASS_EMAIL
+            user: process.env.USER_EMAIL,
+            pass: process.env.PASS_EMAIL
         },
         tls: {
             rejectUnauthorized: false
