@@ -111,7 +111,7 @@ module.exports = async function(tipoCorreo, nombre, correoEnviar, correoCliente,
     });
 
     const info = await transporter.sendMail({
-        from: "'HUBCLEAN' <prueba@javierfreire.cl>",
+        from: "'Contacto HUBCLEAN' <contacto@hubclean.cl>",
         to: correoEnviar,
         subject: cualTipoCorreo[tipoCorreo].asunto,
         text: cualTipoCorreo[tipoCorreo].notificacion,
